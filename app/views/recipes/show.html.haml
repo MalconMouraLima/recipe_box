@@ -6,7 +6,7 @@
       #recipe_info
         %p.description= @recipe.description
         %p
-          Submitted by
+          Criado por
           = @recipe.user.email
 
   .row
@@ -26,5 +26,6 @@
   .row
     .col-md-12
       = link_to "Voltar", root_path, class: "btn btn-default"
-      = link_to "Editar", edit_recipe_path, class: "btn btn-default"
-      = link_to "Deletar", recipe_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"
+      - if user_signed_in?
+        = link_to "Editar", edit_recipe_path, class: "btn btn-default"
+        = link_to "Deletar", recipe_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"
